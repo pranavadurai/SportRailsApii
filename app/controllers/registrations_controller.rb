@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
       @current_user = user
     else
     #  render json: { errors: { 'Error while creating the account' => ['Try agian']}}, status: :unprocessable_entity
-    render json: user.errors.full_messages , status: :unprocessable_entity
+      render json: user.errors.full_messages , status: :unprocessable_entity
     end
   end
 
