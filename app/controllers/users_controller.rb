@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user
 
   def show
+    @current_user = User.find(params[:id])
+  end
+
+  def user_info
     @current_user = current_user
   end
 

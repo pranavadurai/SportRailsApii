@@ -5,11 +5,16 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { sessions: :sessions, registrations: :registrations },
                        path_names: { sign_in: :login, create: :create}
 
-    resource :user, only: [:show, :update] do
-      member do
+    resources :users, only: [:show, :update] do
+      collection do
         post 'facebook'
+        get  'user_info'
+      end
+    end
+    resources :profiles, only: [:update] do
+      member do
+        get 'download_image', as: :download
       end
     end
   end
-
 end

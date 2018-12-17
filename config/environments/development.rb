@@ -6,11 +6,25 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.serve_static_assets = true
+
+  config.assets.compile = true
+
+  config.public_file_server.enabled = true
+
+  #config.paperclip_defaults = { storage: :fog, fog_credentials: { provider: "Local", local_root: "#{Rails.root}/public"}, fog_directory: "", fog_host: "localhost:3000"}
+
+  config.public_file_server.enabled  = true
+
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.action_dispatch.x_sendfile_header = "X-Accel-Redirect"
+
   # Show full error reports.
   config.consider_all_requests_local = true
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
